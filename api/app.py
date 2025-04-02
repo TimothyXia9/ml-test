@@ -85,70 +85,10 @@ async def version():
 
 # Record prediction
 @app.post("/api/v1/predictions")
-async def record_prediction(prediction: Prediction, background_tasks: BackgroundTasks):
-    try:
-        # Generate unique ID
-        prediction_id = (
-            f"{prediction.model_version}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-        )
-
-        # Save prediction
-        prediction_data = prediction.dict()
-        prediction_data["id"] = prediction_id
-
-        # Ensure directory exists
-        os.makedirs("feedback_data/predictions", exist_ok=True)
-
-        # Save prediction data
-        prediction_file = f"feedback_data/predictions/{prediction_id}.json"
-        with open(prediction_file, "w") as f:
-            json.dump(prediction_data, f)
-
-        # Asynchronously check for data drift
-        background_tasks.add_task(check_data_drift, prediction.features)
-
-        logger.info(f"Recorded prediction: {prediction_id}")
-        return {"prediction_id": prediction_id, "status": "recorded"}
-
-    except Exception as e:
-        logger.error(f"Failed to record prediction: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
 
 
 # Record feedback
 @app.post("/api/v1/feedback")
-async def record_feedback(feedback: Feedback, background_tasks: BackgroundTasks):
-    try:
-        # Check if prediction exists
-        prediction_file = f"feedback_data/predictions/{feedback.prediction_id}.json"
-        if not os.path.exists(prediction_file):
-            raise HTTPException(status_code=404, detail="Prediction ID not found")
-
-        # Load prediction data
-        with open(prediction_file, "r") as f:
-            prediction_data = json.load(f)
-
-        # Ensure directory exists
-        os.makedirs("feedback_data/actual_outcomes", exist_ok=True)
-
-        # Save feedback data
-        feedback_data = feedback.dict()
-        feedback_file = f"feedback_data/actual_outcomes/{feedback.prediction_id}.json"
-        with open(feedback_file, "w") as f:
-            json.dump(feedback_data, f)
-
-        # Asynchronously check model drift and calculate performance metrics
-        background_tasks.add_task(check_model_drift, prediction_data, feedback_data)
-        background_tasks.add_task(calculate_metrics, prediction_data, feedback_data)
-
-        logger.info(f"Recorded feedback: {feedback.prediction_id}")
-        return {"status": "feedback recorded"}
-
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Failed to record feedback: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
 
 
 # Get configuration
