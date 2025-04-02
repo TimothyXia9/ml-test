@@ -7,7 +7,6 @@ import yaml
 import json
 import os
 from datetime import datetime
-from pydantic import BaseModel, Field
 import sys
 
 # Add project root directory to path
@@ -45,23 +44,6 @@ config = load_config()
 
 
 # Define data models
-class Prediction(BaseModel):
-    model_version: str = Field(..., description="Model version")
-    prediction: float = Field(..., description="Model prediction value")
-    features: dict = Field(..., description="Input features")
-    timestamp: datetime = Field(
-        default_factory=datetime.now, description="Prediction timestamp"
-    )
-    metadata: dict = Field(default={}, description="Additional metadata")
-
-
-class Feedback(BaseModel):
-    prediction_id: str = Field(..., description="Prediction ID")
-    actual_value: float = Field(..., description="Actual value")
-    timestamp: datetime = Field(
-        default_factory=datetime.now, description="Feedback timestamp"
-    )
-    metadata: dict = Field(default={}, description="Additional metadata")
 
 
 # Create FastAPI application

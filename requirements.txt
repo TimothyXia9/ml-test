@@ -5,3 +5,4 @@ flask
 pytest
 fastapi
 uvicorn
+pyyaml
