@@ -3,10 +3,10 @@ set -e
 
 echo "Starting MLOps Monitor container..."
 
-# mkdir -p /app/logs
-# mkdir -p /app/feedback_data/actual_outcomes
-# mkdir -p /app/feedback_data/drift_reports
-# mkdir -p /app/feedback_data/predictions
+mkdir -p /app/logs
+mkdir -p /app/feedback_data/actual_outcomes
+mkdir -p /app/feedback_data/drift_reports
+mkdir -p /app/feedback_data/predictions
 
 
 # chmod -R 755 /app/logs

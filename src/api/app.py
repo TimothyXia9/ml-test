@@ -14,9 +14,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import other modules
 from api.endpoints import router as endpoints_router
-from scripts.data_drift import check_data_drift
-from scripts.model_drift import check_model_drift
-from scripts.performance import calculate_metrics
+
+# from scripts.data_drift import check_data_drift
+# from scripts.model_drift import check_model_drift
+# from scripts.performance import calculate_metrics
 
 # Configure logging
 logging.basicConfig(
