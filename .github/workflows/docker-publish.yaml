@@ -10,13 +10,6 @@ on:
 env:
     DOCKER_HUB_REPO: tianqixia/mlops-monitor
 
-# test if Docker Hub credentials are properly set
-run: |
-    if [ -z "${{ secrets.DOCKERHUB_USERNAME }}" ] || [ -z "${{ secrets.DOCKERHUB_TOKEN }}" ]; then
-      echo "Error: DOCKERHUB_USERNAME and DOCKERHUB_TOKEN secrets must be set in repository settings"
-      exit 1
-    fi
-
 jobs:
     build:
         runs-on: ubuntu-latest
