@@ -24,4 +24,6 @@ htmlcov/
 *.swp
 *.swo
 
+*.log
+
 quicknotes.md
