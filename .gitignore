@@ -1,28 +1,6 @@
-
 venv/
-env/
-ENV/
-
 __pycache__/
-*.py[cod]
-*$py.class
-
-dist/
-build/
-*.egg-info/
-
-
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-.pytest_cache/
-
-.idea/
 .vscode/
-*.swp
-*.swo
 
 *.log
 

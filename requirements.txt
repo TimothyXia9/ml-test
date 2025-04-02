@@ -1,8 +1,9 @@
 pandas
 numpy
 scikit-learn
-flask
 pytest
+flask
 fastapi
 uvicorn
 pyyaml
+requests
