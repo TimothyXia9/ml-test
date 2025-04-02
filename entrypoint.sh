@@ -12,6 +12,8 @@ echo "Starting MLOps Monitor container..."
 # chmod -R 755 /app/logs
 # chmod -R 755 /app/feedback_data
 
+cd /app
+export PYTHONPATH=/app
 
 if [ "$1" = "api" ]; then
     # 如果指定了API模式，启动API服务
