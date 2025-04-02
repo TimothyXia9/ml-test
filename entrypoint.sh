@@ -19,15 +19,15 @@ if [ "$1" = "api" ]; then
 elif [ "$1" = "dashboard" ]; then
     python -m dashboards.metrics_dashboard
 else
-    python -m scripts.collect_metrics &
+    # python -m scripts.collect_metrics &
     
-    python -m scripts.data_drift &
+    # python -m scripts.data_drift &
     
-    python -m scripts.model_drift &
+    # python -m scripts.model_drift &
     
-    python -m scripts.performance &
+    # python -m scripts.performance &
     
-    python -m scripts.alert_manager &
+    # python -m scripts.alert_manager &
     
     uvicorn api.app:app --host 0.0.0.0 --port 8000
 fi

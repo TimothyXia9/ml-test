@@ -43,14 +43,9 @@ def load_config():
 config = load_config()
 
 
-# Define data models
-
-
 # Create FastAPI application
 app = FastAPI(
     title="MLOps Monitor API",
-    description="MLOps monitoring system API supporting continuous monitoring, drift detection, and performance evaluation",
-    version="1.0.0",
 )
 
 # Add CORS middleware
