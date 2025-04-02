@@ -9,7 +9,13 @@ on:
             - "entrypoint.sh"
             - ".github/workflows/docker-publish.yaml"
             - "requirements.txt"
-            - "src/**"
+            - "api/**"
+            - "config/**"
+            - "scripts/**"
+            - "tests/**"
+            - "docs/**"
+            - "dashboards/**"
+
     pull_request:
         branches: ["main"]
 
