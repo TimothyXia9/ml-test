@@ -13,6 +13,7 @@ env:
 jobs:
     build:
         runs-on: ubuntu-latest
+        environment: ml-monitor
         permissions:
             contents: read
             packages: write
